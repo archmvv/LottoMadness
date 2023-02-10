@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LottoMadness extends JFrame{
+    LottoEvent lotto = new LottoEvent(this);
     
     // red 1 - row 1
     JPanel row1 = new JPanel();
@@ -43,6 +44,15 @@ public class LottoMadness extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         GridLayout layout = new GridLayout(5,1,10,10);
         setLayout(layout);
+        
+        //add listening
+        quickpick.addItemListener(lotto);
+        personal.addItemListener(lotto);
+        stop.addActionListener(lotto);
+        play.addActionListener(lotto);
+        reset.addActionListener(lotto);
+        
+        
         
         FlowLayout layout1 = new FlowLayout(FlowLayout.CENTER, 10, 10);
         option.add(quickpick);
